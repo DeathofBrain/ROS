@@ -13,5 +13,17 @@ int main(int argc, char *argv[])
     ros::init(argc,argv,"set_param");
     ros::NodeHandle nh;
     
+    //参数增加
+    //方案1：nh.setParam()
+    nh.setParam("type", "Yellow");
+    nh.setParam("radius", 0.15);
+    //方案2：ros::param::set()
+    ros::param::set("type_param", "White");
+    ros::param::set("radius_param", 0.15);
+    //参数改
+    //1. nh.setParam()
+    nh.setParam("radius", 0.20);
+    //2. ros::param::set()
+    ros::param::set("radius_param", 0.25);
     return 0;
 }
