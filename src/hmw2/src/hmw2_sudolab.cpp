@@ -3,8 +3,6 @@
 #define PI 3.14159265
 /*
 关键：找寻sudolab绘制路径
-
-
 */ 
 void turn_left(geometry_msgs::Twist &twist){//左转
     twist.linear.x = 0;
