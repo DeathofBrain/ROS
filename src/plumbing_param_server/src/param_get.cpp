@@ -30,6 +30,9 @@ int main(int argc, char *argv[])
     setlocale(LC_ALL,"");
     ros::init(argc,argv,"get_param");
     ros::NodeHandle nh;
-    
+    //--------
+    //1. param
+    double radius = nh.param("radius", 0.5);
+    ROS_INFO("radius = %.2f", radius);
     return 0;
 }
