@@ -10,7 +10,7 @@
                 存在,返回 true,且将值赋值给参数2
                 若果键不存在，那么返回值为 false，且不为参数2赋值
 
-            getParamCached键,存储结果的变量)--提高变量获取效率
+            getParamCached(键,存储结果的变量)--提高变量获取效率
                 存在,返回 true,且将值赋值给参数2
                 若果键不存在，那么返回值为 false，且不为参数2赋值
 
@@ -31,8 +31,43 @@ int main(int argc, char *argv[])
     ros::init(argc,argv,"get_param");
     ros::NodeHandle nh;
     //--------
-    //1. param
+    //1. param(键,默认值)
     double radius = nh.param("radius", 0.5);
-    ROS_INFO("radius = %.2f", radius);
+    ROS_INFO("通过param()获得的radius = %.2f", radius);
+
+    //2. getParam
+    double radius_2;
+    bool result = nh.getParam("radius", radius_2);
+    if (result)
+    {
+        ROS_INFO("通过getParam()获得的radius = %.2f", radius_2);
+    }
+    else{
+        ROS_INFO("查询变量不存在");
+    }
+
+    //3. getParamCached
+    //同2，仅性能提升
+
+    //4. getParamNames
+    std::vector<std::string> names;
+    nh.getParamNames(names);
+    for (auto &&name : names)
+    {
+        ROS_INFO("遍历的元素：%s",name.c_str());
+    }
+    
+    //5. hasParam
+    bool flag1 = nh.hasParam("radius");
+    bool flag2 = nh.hasParam("radiusxx");
+    ROS_INFO("radius存在吗？%d",flag1);
+    ROS_INFO("radiusxx存在吗？%d",flag2);
+
+    //6.searchParam
+    std::string key;
+    nh.searchParam("radius",key);
+    ROS_INFO("搜索结果：%s",key.c_str());
+
+    //ros::param::～ ~对应上面的函数
     return 0;
 }
