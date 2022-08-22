@@ -135,7 +135,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/plumbing_param_server_node.cpp)
 add_executable(param_set src/param_set.cpp)
-
+add_executable(param_get src/param_get.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -150,7 +150,9 @@ add_executable(param_set src/param_set.cpp)
 target_link_libraries(param_set
   ${catkin_LIBRARIES}
 )
-
+target_link_libraries(param_get
+  ${catkin_LIBRARIES}
+)
 #############
 ## Install ##
 #############
