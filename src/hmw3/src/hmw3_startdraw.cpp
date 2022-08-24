@@ -80,11 +80,13 @@ int main(int argc, char *argv[])
         if(count == 5)
         {
             turn_left(t1);
+            turn_back(t3);
         }
 
         if(count == 6)
         {
             forward(t1);
+            forward(t3);
         }
 
         if(count == 7)
@@ -95,41 +97,42 @@ int main(int argc, char *argv[])
         if(count == 8)
         {
             forward(t1);
+            turn_left(t3);
         }
 
         if(count == 9)
         {
             turn_right(t1);
+            forward(t3);
         }
 
         if(count == 10)
         {
             forward(t1);
+            turn_left(t3);
         }
 
         if(count == 11)
         {
             stop_draw(t1);
+            forward(t3);
         }
 
-        // if(count == 11)
-        // {
-        //     forward(t1);
-        // }
+        if(count == 12)
+        {
+
+        }
+        if(count == 13)
+        {
+            stop_draw(t3);
+        }
         pub1.publish(t1);
-        ros::Duration(0.5).sleep();
         pub2.publish(t2);
-        ros::Duration(0.5).sleep();
         pub3.publish(t3);
-        ros::Duration(0.5).sleep();
         pub4.publish(t4);
-        ros::Duration(0.5).sleep();
         pub5.publish(t5);
-        ros::Duration(0.5).sleep();
         pub6.publish(t6);
-        ros::Duration(0.5).sleep();
         pub7.publish(t7);
-        ros::Duration(0.5).sleep();
         ros::spinOnce();
         loopRate.sleep();
     }
