@@ -135,7 +135,8 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/hmw3_node.cpp)
+add_executable(hmw3_sudolab src/hmw3_sudolab.cpp)
+add_executable(hmw3_startdraw src/hmw3_startdraw.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -148,10 +149,12 @@ include_directories(
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(${PROJECT_NAME}_node
-#   ${catkin_LIBRARIES}
-# )
-
+target_link_libraries(hmw3_sudolab
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(hmw3_startdraw
+  ${catkin_LIBRARIES}
+)
 #############
 ## Install ##
 #############
