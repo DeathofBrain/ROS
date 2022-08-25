@@ -49,14 +49,15 @@ int main(int argc, char *argv[])
     while (ros::ok())
     {
         ++count;
-
+        //1,3,5,7 --> s,u,d,o
+        //2,4,6 --> l,a,b
         if(count == 2)
         {
             forward(t1);
             turn_left(t3);
             forward(t5);
             forward(t7);
-            turn_left(t2);
+            forward(t2);
             turn_left(t4);
             forward(t6);
         }
@@ -67,7 +68,7 @@ int main(int argc, char *argv[])
             forward(t3);
             turn_left(t5);
             turn_left(t7);
-            forward(t2);
+            turn_back(t2);
             forward(t4);
             turn_left(t6);
         }
@@ -75,56 +76,103 @@ int main(int argc, char *argv[])
         if(count == 4)
         {
             forward(t1);
+            forward(t5);
+            forward(t7);
+            forward(t2);
+            forward(t6);
         }
 
         if(count == 5)
         {
             turn_left(t1);
             turn_back(t3);
+            turn_right(t2);
+            turn_right(t4);
+            turn_left(t6);
         }
 
         if(count == 6)
         {
             forward(t1);
             forward(t3);
+            turn_back(t5);
+            turn_left(t7);
+            forward(t2);
+            forward(t4);
+            forward(t6);
         }
 
         if(count == 7)
         {
             turn_right(t1);
+            forward(t5);
+            forward(t7);
+            turn_right(t4);
+            turn_left(t6);
         }
 
         if(count == 8)
         {
             forward(t1);
             turn_left(t3);
+            turn_right(t5);
+            turn_left(t7);
+            stop_draw(t2);
+            forward(t4);
+            forward(t6);
         }
 
         if(count == 9)
         {
             turn_right(t1);
             forward(t3);
+            forward(t5);
+            forward(t7);
+            turn_right(t4);
+            turn_back(t6);
         }
 
         if(count == 10)
         {
             forward(t1);
             turn_left(t3);
+            turn_left(t5);
+            forward(t4);
+            forward(t6);
         }
 
         if(count == 11)
         {
             stop_draw(t1);
             forward(t3);
+            forward(t5);
+            stop_draw(t7);
+            turn_back(t4);
         }
 
         if(count == 12)
         {
-
+            stop_draw(t5);
+            forward(t4);
+            stop_draw(t6);
         }
         if(count == 13)
         {
             stop_draw(t3);
+            turn_right(t4);
+        }
+        if(count == 14)
+        {
+            forward(t4);
+        }
+        if(count == 15)
+        {
+            stop_draw(t4);
+        }
+        if(count == 16)
+        {
+            ROS_INFO("绘制完成");
+            ros::shutdown();
         }
         pub1.publish(t1);
         pub2.publish(t2);
